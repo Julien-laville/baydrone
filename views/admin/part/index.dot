@@ -1,0 +1,7 @@
+<ul>
+    [[~ model.parts :part]]
+
+        <li><a href="part/[[= part.id]]">[[= part.name]]</li>
+
+    [[~]]
+</ul>

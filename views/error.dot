@@ -1,0 +1,6 @@
+<h1>[[= model.message ]]</h1>
+<ul>
+    [[~ model.error :err ]]
+        <li>[[= err ]]</li>
+    [[~]]
+</ul>
