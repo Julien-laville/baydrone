@@ -1,0 +1,11 @@
+<form method="post" action="create">
+
+    <input type="text" name="name">
+
+    <textarea name="description">
+
+    </textarea>
+
+    <input type="submit">
+
+</form>

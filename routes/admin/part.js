@@ -11,13 +11,23 @@ router.get('/', function(req, res, next) {
     })
 });
 
-router.get('/:id', function(req, res, next) {
-    models.Part.findById(req.params.id).then(function(parts) {
-        if (err) throw err;
+router.get('/new', function(req, res, next) {
+    res.render('admin/part/new');
+});
 
-        res.render('admin/part/show', {parts : parts});
+router.post('/create', function(req, res, next) {
+    models.Part.create(req.body).then(function(part) {
+        req.flash('info', 'Flash is back!')
+        res.redirect('/admin/part')
     });
 });
+
+router.get('/:id', function(req, res, next) {
+    models.Part.findById(req.params.id).then(function(part) {
+        res.render('admin/part/show', {part : part.dataValues});
+    });
+});
+
 
 
 module.exports = router;

@@ -1,1 +1,2 @@
-<h1><%= part.name %></h1>
+<h1>[[= model.part.name ]]</h1>
+[[= model.part.createdAt ]]

@@ -1,8 +1,9 @@
 var express = require('express');
 var path = require('path');
-var favicon = require('serve-favicon');
+var flash = require('connect-flash');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session')
 var bodyParser = require('body-parser');
 
 var config = require('./config/application')();
@@ -15,6 +16,15 @@ var admin = require('./routes/admin/index');
 var part = require('./routes/admin/part');
 
 var app = express();
+
+
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+app.use(flash());
 
 // view engine setup
 var engine = require('express-dot-engine');
@@ -40,6 +50,7 @@ app.use('/craft', craft);
 app.use('/users', users);
 app.use('/admin', admin);
 app.use('/admin/part', part);
+
 
 
 // catch 404 and forward to error handler
