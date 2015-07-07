@@ -1,11 +1,12 @@
 <form method="post" action="create">
-
+    <h3>Name</h3>
     <input type="text" name="name">
 
-    <textarea name="description">
+    <h3>Description</h3>
+    <textarea name="description"></textarea>
 
-    </textarea>
+    <h3>tags</h3>
+    <input type="text" name="tags">
 
     <input type="submit">
-
 </form>

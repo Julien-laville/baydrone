@@ -1,0 +1,13 @@
+<h1>New</h1>
+
+<h3>Name</h3>
+<input type="text" name="name">
+
+<h3>Filters</h3>
+[[~ model.selectors:selector ]]
+
+    [[= selector.render() ]]
+
+[[~]]
+
+<input type="submit">
