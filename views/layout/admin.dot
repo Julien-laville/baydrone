@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>A</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="/admin">/</a></li>
+                <li><a href="/admin/parts">Parts</a></li>
+                <li><a href="/admin/collect">Collect</a></li>
+                <li><a href="/admin/users">Users</a></li>
+                <li><a href="/admin/collect">Collect</a></li>
+                <li><a href="/admin/crafts">Crafts</a></li>
+            </ul>
+        </nav>
+        [[= layout.body ]]
+    </body>
+
+</html>

@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var session = require('express-session')
 var bodyParser = require('body-parser');
+var models = require('./models')
 
 var config = require('./config/application')();
 
@@ -44,6 +45,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(models.User.isLogged);
 
 app.use('/', routes);
 app.use('/craft', craft);

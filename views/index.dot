@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>[[= model.title ]]</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <nav>
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/admin">Admin</a></li>
-        <li><a href="/craft">Craft</a></li>
-        <li>...</li>
-      </ul>
-    </nav>
-  </body>
-</html>
+---
+layout: layout/client.dot
+---
+[[##body:
+
+  <h1>Welcome</h1>
+  shop / craft / setups
+
+#]]

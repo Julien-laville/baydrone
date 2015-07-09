@@ -1,5 +1,6 @@
 <h1>[[= model.message ]]</h1>
 <ul>
+    [[= console.log(model) ]]
     [[~ model.error :err ]]
         <li>[[= err ]]</li>
     [[~]]

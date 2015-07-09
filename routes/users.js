@@ -11,9 +11,13 @@ router.get('/register', function(req, res, next) {
 });
 
 router.get('/create', function(req, res, next) {
-    models.User.create(req);
-    req.flash('info', 'Welcome new user');
-    res.redirect('/');
+    var userPromise = models.User.create(req);
+    userPromise.then(function(user) {
+        console.log(user);
+        req.flash('info', 'Welcome new user');
+        res.redirect('/');
+    });
+
 });
 
 module.exports = router;
