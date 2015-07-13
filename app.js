@@ -46,7 +46,7 @@ app.use(cookieParser());
 app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(models.User.isLogged);
+engine.helper.isLogged = models.User.isLogged;
 
 app.use('/', routes);
 app.use('/craft', craft);
