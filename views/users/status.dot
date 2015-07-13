@@ -1,5 +1,4 @@
-[[? isLogged() ]]
-
+[[? model.isLogged ]]
     welcome #user <button>logout</button>
 [[??]]
     <button>Login</button>

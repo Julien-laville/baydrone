@@ -3,9 +3,9 @@ var path = require('path');
 var flash = require('connect-flash');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var session = require('express-session')
+var session = require('express-session');
 var bodyParser = require('body-parser');
-var models = require('./models')
+var models = require('./models');
 
 var config = require('./config/application')();
 
@@ -17,7 +17,8 @@ var admin = require('./routes/admin/index');
 var part = require('./routes/admin/part');
 
 var app = express();
-
+i18n = require("i18n");
+app.use(i18n.init);
 
 app.use(session({
   secret: 'keyboard cat',
