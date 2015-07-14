@@ -54,7 +54,7 @@ app.use('/craft', craft);
 app.use('/users', users);
 app.use('/admin', admin);
 app.use('/admin/part', part);
-
+app.use('/admin/collect', part);
 
 
 // catch 404 and forward to error handler
