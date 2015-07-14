@@ -4,8 +4,9 @@ factory : [[= model.factory ]]<br>
 
 <h2>Source</h2>
 [[~ model.sources:source ]]
-    [[= source.url ]] [[source.getPrice() ]]
+    [[= source.url ]] [[= source.getPrice() ]]
 [[~]]
+
 <a href="#">New source</a> <br>
 
 <h2>#Tags</h2>
@@ -22,5 +23,14 @@ factory : [[= model.factory ]]<br>
 [[~]]
 <a href="#">New specification</a>
 
+[[? model.isMotor || model.isEsc ]]
+    <label>4S ?</label>
+    <input type="checkbox"></input>
+[[?]]
+
+<span style="background:#ecc">
+    <label>Avoid ?</label>
+    <input type="checkbox"></input>
+</span>
 
 [[= model.createdAt ]]
