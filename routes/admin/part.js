@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var models  = require('../../models');
+models.Tag.belongsToMany(models.Part, {through : 'tag_user', foreignKey : 'tagId'});
+models.Part.belongsToMany(models.Tag, {through : 'tag_user', foreignKey : 'partId'});
 
 router.get('/', function(req, res, next) {
     models.Part.findAll().then(function(parts) {
@@ -20,8 +22,12 @@ router.post('/create', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-    models.Part.findById(req.params.id).then(function(part) {
-        res.render('admin/part/show', {part : part.dataValues});
+    models.Part.findById(req.params.id).then(function(tuple) {
+        if(!tuple) {
+            res.render('admin/part/404')
+        } else {
+            res.render('admin/part/show', {part : tuple.dataValues.part});
+        }
     });
 });
 

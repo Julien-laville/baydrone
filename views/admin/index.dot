@@ -1,2 +1,8 @@
 <a href="admin/part">Parts</a>
 <a href="admin/collect">Collectors</a>
+
+
+<h1>Statistics</h1>
+
+users : [[= model.userCount ]] <br>
+parts : [[= model.partCount ]]

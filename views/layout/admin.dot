@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
     <head>
-        <title>A</title>
+        <title>Admin</title>
     </head>
     <body>
         <nav>
@@ -10,7 +10,6 @@
                 <li><a href="/admin/parts">Parts</a></li>
                 <li><a href="/admin/collect">Collect</a></li>
                 <li><a href="/admin/users">Users</a></li>
-                <li><a href="/admin/collect">Collect</a></li>
                 <li><a href="/admin/crafts">Crafts</a></li>
             </ul>
         </nav>
