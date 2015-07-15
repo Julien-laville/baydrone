@@ -1,0 +1,12 @@
+---
+layout: ../layout/client.dot
+---
+[[##body:
+
+    <form>
+        <label>login</label>
+        <input name="login" type="login">
+        <input type="submit">
+    </form>
+
+#]]
