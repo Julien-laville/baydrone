@@ -9,8 +9,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="/admin">Admin</a></li>
                 <li><a href="/craft">Crafts</a></li>
-                <li><a href="/parts">Parts</a></li>
-                <li><a href="/parts">Parts</a></li>
+                <li><a href="/part">Parts</a></li>
             </ul>
             [[= partial('../users/status.dot') ]]
         </nav>

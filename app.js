@@ -12,9 +12,11 @@ var config = require('./config/application')();
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var craft = require('./routes/craft');
+var part = require('./routes/part');
 
 var admin = require('./routes/admin/index');
-var part = require('./routes/admin/part');
+var adminPart = require('./routes/admin/part');
+var adminCollect = require('./routes/admin/collect');
 
 var app = express();
 i18n = require("i18n");
@@ -52,9 +54,11 @@ engine.helper.isLogged = models.User.isLogged;
 app.use('/', routes);
 app.use('/craft', craft);
 app.use('/users', users);
+app.use('/part', part);
+
 app.use('/admin', admin);
-app.use('/admin/part', part);
-app.use('/admin/collect', part);
+app.use('/admin/part', adminPart);
+app.use('/admin/collect', adminCollect);
 
 
 // catch 404 and forward to error handler

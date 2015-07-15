@@ -1,31 +1,36 @@
-<h1>New</h1>
+---
+layout: ../layout/client.dot
+---
+[[##body:
+    <h1>New rig</h1>
 
-<h3>Name</h3>
-<input type="text" name="name">
+    <h3>Name</h3>
+    <input type="text" name="name">
 
-<h2>Types</h2>
-<ul>
-    <li>Racer</li>
-    <li>Beginner</li>
-    <li>Heavy lift</li>
-</ul>
-<h2>Slots</h2>
-[[ for(var i = 0; i < 6; i += 1) { ]]
+    <h2>Types</h2>
+    <ul>
+        <li>Racer</li>
+        <li>Beginner</li>
+        <li>Heavy lift</li>
+    </ul>
+    <h2>Slots</h2>
+    [[ for(var i = 0; i < 6; i += 1) { ]]
 
-    <div style="border:1px solid #7c7c7c; height:20px;width:20px"></div>
+        <div style="border:1px solid #7c7c7c; height:20px;width:20px"></div>
 
-[[ } ]]
-
-
-<label>Fuck ! I want one</label>
-<input type="checkbox"></input>
-
-<h2>Controller</h2>
+    [[ } ]]
 
 
-<h2>FPV</h2>
+    <label>Fuck ! I want one</label>
+    <input type="checkbox"></input>
 
-<a href="">More...</a>
+    <h2>Controller</h2>
 
 
-<input type="submit">
+    <h2>FPV</h2>
+
+    <a href="">More...</a>
+
+
+    <input type="submit">
+#]]

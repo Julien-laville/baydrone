@@ -1,1 +1,6 @@
-<a href="craft/new">New</a>
+---
+layout: ../layout/client.dot
+---
+[[##body:
+    <a href="craft/new">New</a>
+#]]
