@@ -9,7 +9,7 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-    queryInterface.createTable('collectors',{
+    queryInterface.createTable('crafts',{
       createdAt: {
         type: dataTypes.DATE
       },
@@ -22,22 +22,28 @@ module.exports = {
         autoIncrement : true,
         unsigned : true
       },
-      site : {
+      name : {
         type : dataTypes.STRING
       }
+    });
 
+    queryInterface.createTable('craft_part', {
+      craft_id : {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      },
+      part_id : {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      }
     })
 
   },
 
   down: function (queryInterface, Sequelize) {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.dropTable('users');
-    */
-    queryInterface.dropTable('collectors')
+    queryInterface.dropTable('crafts');
+    queryInterface.dropTable('craft_part');
   }
 };

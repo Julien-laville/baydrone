@@ -1,0 +1,25 @@
+<h1>Collectors</h1>
+
+[[? !model.collectors ]]
+    - no collectors yet -
+[[?]]
+
+<a href="/admin/collect/new">New</a>
+
+[[~ model.collectors:collector ]]
+
+    [[= collector.site ]]
+
+    <a href="#">Start</a>
+
+[[~]]
+
+<script src="/javascript/vendors/promise.js"></script>
+<script>
+
+    var startCrawl = promise.get('admin/collect/1/start')
+    startCrawl.then(function(error, data) {
+        console.log(data);
+    });
+
+</script>

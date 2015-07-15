@@ -1,0 +1,29 @@
+<form action="">
+    <label>Site URL</label>
+    <input type="text" name="site"/><br>
+
+    <label>URL's csv</label>
+    <textarea name="site"></textarea><br>
+
+    <h2>Rules</h2>
+    <table>
+        [[ for(var i = 0; i < 5; i += 1) { ]]
+        <tr>
+            <td><label>Path</label><input type="text" name="path[]"/></td>
+            <td>
+                <label>Value</label>
+                <select name="value[]">
+                    <option value="picture">Picture</option>
+                    <option value="price">Price</option>
+                    <option value="category">Category</option>
+                    <option value="description">Description</option>
+                    <option value="specification">Specification</option>
+                </select>
+            </td>
+            [[ } ]]
+        </tr>
+    </table>
+
+    <input type="submit"/>
+
+</form>

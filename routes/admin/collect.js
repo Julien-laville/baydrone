@@ -1,15 +1,25 @@
 var express = require('express');
 var router = express.Router();
+var models = require('../../models');
+
 
 var Crawler = require("crawler");
 var Url = require('url');
 
 router.get('/', function(req, res, next) {
-    res.render('admin/collect/index', {site :  'example'})
+    models.Collector.findAll().then(function(collectors) {
+        res.render('admin/collect/index', {collectors : collectors})
+    });
+});
+
+router.get('/new', function(req, res, next) {
+    res.render('admin/collect/new', {})
 });
 
 router.get('/:id', function(req, res, next) {
-    res.render('admin/collect/show', {})
+    models.Collector.findById(req.params.id, function(collector) {
+        res.json(collector);
+    });
 });
 
 router.get(':id/start', function(req, res, next) {
