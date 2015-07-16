@@ -17,7 +17,7 @@
 <script src="/javascript/vendors/promise.js"></script>
 <script>
 
-    var startCrawl = promise.get('admin/collect/1/start')
+    var startCrawl = promise.get('/admin/collect/1/start')
     startCrawl.then(function(error, data) {
         console.log(data);
     });
