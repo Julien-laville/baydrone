@@ -24,6 +24,9 @@ module.exports = {
       },
       site : {
         type : dataTypes.STRING
+      },
+      urls : {
+        type : dataTypes.TEXT
       }
 
     })

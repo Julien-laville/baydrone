@@ -1,3 +1,8 @@
+---
+layout: ../../layout/admin.dot
+---
+[[##body:
+
 <h1>Collectors</h1>
 
 [[? !model.collectors ]]
@@ -6,20 +11,43 @@
 
 <a href="/admin/collect/new">New</a>
 
+<ul>
 [[~ model.collectors:collector ]]
+
+    <li id="collector_[[= collector.id ]]">
 
     [[= collector.site ]]
 
-    <a href="#">Start</a>
+    <a href="#" onclick="startCrawl([[= collector.id ]])">Start</a>
+
+    <a href="/admin/collect/[[= collector.id ]]/edit">Edit</a>
+
+    <a href="#" onclick="deleteCrawl([[= collector.id ]])" style="color:red">Delete</a>
+
+    </li>
 
 [[~]]
-
+</ul>
 <script src="/javascript/vendors/promise.js"></script>
 <script>
 
-    var startCrawl = promise.get('/admin/collect/1/start')
-    startCrawl.then(function(error, data) {
-        console.log(data);
-    });
+
+    function startCrawl(id) {
+        var startCrawlPromise = promise.get('/admin/collect/' + id + '/start')
+        startCrawlPromise.then(function(error, data) {
+            console.log(data);
+        });
+    }
+
+    function deleteCrawl(id) {
+        var deleteCrawlPromise = promise.get('/admin/collect/' + id + '/start')
+        deleteCrawlPromise.then(function(error, data) {
+            var item = document.getElementById('collector_' + id);
+            item.style.display = 'none';
+        });
+    }
+
 
 </script>
+
+#]]

@@ -15,5 +15,5 @@
         </nav>
         [[= layout.body ]]
     </body>
-
+    <script src="/javascript/vendors/promise.js"></script>
 </html>
