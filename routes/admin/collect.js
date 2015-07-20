@@ -14,23 +14,50 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id/start', function(req, res, next) {
 
-
+    var errors = [];
     var crawler = new Crawler({
         callback : function(err, body, jquery) {
+            if(err) {
+                errors.push({uri : this.uri, code : err.code});
+                return;
+            }
+            if(body.uri === 'http://www.hobbyking.com/404.html') {
+                errors.push({uri : this.uri, code : 404});
+            }
+
+            /* ariane */
             var arianes = [];
             jquery('.defaultLineHeight a').each(function(i, ariane) {
                 /* ariane */
                 var arianeLink = jquery(ariane).text();
                 arianes.push(arianeLink);
-                /* desc */
-
-                /* tech */
-
-                /* quality */
-
-                /* pics */
-                //http://stackoverflow.com/questions/12740659/downloading-images-with-node-js
             });
+
+            /* desc */
+            var desc = jquery('#productDetails').html();
+
+
+            /* tech */
+            var tech = desc;
+
+            /* quality */
+            for(var i = 0; i <= 5; i += 1) {
+                var crowns = jquery('img[src="images/new11/' + i + 'crown.jpg"]');
+                if(crowns.length == 1) {
+                    var quality = i
+                }
+            }
+
+            //
+            /* pics */
+            jquery('img.newprodbox').each(function(thumb) {
+                var clickAction = jquery(thumb).attr('onclick');
+                var imgUrl = clickAction.match(/src='(.*)'/)[1];
+                models.Part.download('http://www.hobbyking.com/hobbyking/store/' + imgUrl)
+            });
+
+            /* price */
+
 
         }
     });
@@ -39,12 +66,12 @@ router.get('/:id/start', function(req, res, next) {
     collectorPromise.then(function(collecorTuple) {
         var collector = collecorTuple.dataValues;
         collector.urls.split(";").forEach(function(item) {
-            crawler.queue(item)
+            crawler.queue("http://www.hobbyking.com/hobbyking/store/__17507__ImmersionRC_5_8Ghz_Audio_Video_Transmitter_FatShark_compatible_600mw_.html")
         });
 
     });
 
-    //crawler.queue('http://www.hobbyking.com/hobbyking/store/__78045__Basher_RZ_4_1_10_Rally_Racer_ARR_UK_Warehouse_.html')
+
 });
 
 router.get('/new', function(req, res, next) {
