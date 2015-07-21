@@ -1,4 +1,8 @@
+<center>
 # baydrone
+</center>
+
+<hr>
 
 collect data
 compare
@@ -15,4 +19,9 @@ rig connected to social networks
 port calculator
 
 port optimisator
+
+##Install
+npm install
+npm install sequelize -g
+npm install sequelize-cli -g
 
