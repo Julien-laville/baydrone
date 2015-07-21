@@ -1,5 +1,5 @@
 <center>
-# baydrone
+<h1>Baydrone</h1>
 </center>
 
 <hr>
@@ -21,7 +21,8 @@ port calculator
 port optimisator
 
 ##Install
-npm install
-npm install sequelize -g
-npm install sequelize-cli -g
+
+* npm install
+* npm install sequelize -g
+* npm install sequelize-cli -g
 
