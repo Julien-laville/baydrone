@@ -24,6 +24,8 @@ router.get('/:id/start', function(req, res, next) {
             if(body.uri === 'http://www.hobbyking.com/404.html') {
                 errors.push({uri : this.uri, code : 404});
             }
+			/* name */
+			var name = jquery('#productDescription').text()
 
             /* ariane */
             var arianes = [];
@@ -38,7 +40,8 @@ router.get('/:id/start', function(req, res, next) {
 
 
             /* tech */
-            var tech = desc;
+            var tech = desc.match(/<strong>Specs:<br><\/strong>(([\s\S])*)(<strong>\w*:<br><\/strong>)?$/);
+			var techs = tech[1].split('<br>');
 
             /* quality */
             for(var i = 0; i <= 5; i += 1) {
@@ -54,15 +57,12 @@ router.get('/:id/start', function(req, res, next) {
                 var clickAction = jquery(thumb).attr('onclick');
                 var imgUrl = clickAction.match(/src='(.*)'/)[1];
                 var ext = imgUrl.split('.').reverse()[0];
-                var filename = "atte_" + i + '.' + ext;
-                models.Part.download('http://www.hobbyking.com/hobbyking/store/' + imgUrl, filename)
+                var filename = name.replace(/\W/g, '_') + i + '.' + ext;
+                models.Part.downloadImage('http://www.hobbyking.com/hobbyking/store/' + imgUrl, filename)
             });
 
             /* price */
             var price = jquery('#price_lb').text()
-
-
-
         }
     });
 
