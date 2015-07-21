@@ -50,13 +50,17 @@ router.get('/:id/start', function(req, res, next) {
 
             //
             /* pics */
-            jquery('img.newprodbox').each(function(thumb) {
+            jquery('img.newprodbox').each(function(i, thumb) {
                 var clickAction = jquery(thumb).attr('onclick');
                 var imgUrl = clickAction.match(/src='(.*)'/)[1];
-                models.Part.download('http://www.hobbyking.com/hobbyking/store/' + imgUrl)
+                var ext = imgUrl.split('.').reverse()[0];
+                var filename = "atte_" + i + '.' + ext;
+                models.Part.download('http://www.hobbyking.com/hobbyking/store/' + imgUrl, filename)
             });
 
             /* price */
+            var price = jquery('#price_lb').text()
+
 
 
         }
