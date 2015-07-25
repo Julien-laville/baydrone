@@ -29,13 +29,37 @@ module.exports = {
         type : dataTypes.TEXT
       }
     });
-    queryInterface.createTable('tag_user', {
+    queryInterface.createTable('part_tags', {
       partId: {
         type: dataTypes.INTEGER,
         primaryKey: true,
         unsigned: true
       },
       tagId: {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      }
+    });
+    queryInterface.createTable('part_sources', {
+      partId: {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      },
+      sourceId: {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      }
+    });
+    queryInterface.createTable('part_pictures', {
+      partId: {
+        type: dataTypes.INTEGER,
+        primaryKey: true,
+        unsigned: true
+      },
+      pictureId: {
         type: dataTypes.INTEGER,
         primaryKey: true,
         unsigned: true
@@ -54,7 +78,9 @@ module.exports = {
      return queryInterface.dropTable('users');
      */
     queryInterface.dropTable('parts');
-    queryInterface.dropTable('tag_user');
+    queryInterface.dropTable('part_tags');
+    queryInterface.dropTable('part_pictures');
+    queryInterface.dropTable('part_sources');
 
   }
 };

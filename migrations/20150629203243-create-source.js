@@ -27,6 +27,12 @@ module.exports = {
       },
       url : {
         type : dataTypes.STRING
+      },
+      price : {
+        type : dataTypes.DECIMAL(16,3)
+      },
+      currency : {
+        type : dataTypes.ENUM('dollar', 'euro', 'yuan')
       }
     })
 

@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
             console.log('content-type:', res.headers['content-type']);
             console.log('content-length:', res.headers['content-length']);
 
-            request(uri).pipe(fs.createWriteStream('downloads/'+filename));
+            request(uri).pipe(fs.createWriteStream('downloads/' + filename));
 
         })
     };

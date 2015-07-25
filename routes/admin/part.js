@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var models  = require('../../models');
-models.Tag.belongsToMany(models.Part, {through : 'tag_user', foreignKey : 'tagId'});
-models.Part.belongsToMany(models.Tag, {through : 'tag_user', foreignKey : 'partId'});
+
+models.Tag.belongsToMany(models.Part, {through : 'part_tags', foreignKey : 'tagId'});
+models.Part.belongsToMany(models.Tag, {through : 'part_tags', foreignKey : 'partId'});
 
 router.get('/', function(req, res, next) {
     models.Part.findAll().then(function(parts) {
