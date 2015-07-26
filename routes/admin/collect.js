@@ -67,7 +67,11 @@ router.get('/:id/start', function(req, res, next) {
             var partPromise = models.Part.create({name : name});
 
             partPromise.then(function(part) {
-                part.addSources([{name : 'name'}]);
+                var s = models.Source.create({name : 'name'});
+                s.then(function(rs) {
+                    part.addSources([rs]);
+                })
+
             })
 
         }
