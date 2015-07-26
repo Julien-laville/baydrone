@@ -24,6 +24,12 @@ module.exports = {
       },
       name : {
         type : dataTypes.STRING
+      },
+      value : {
+        type : dataTypes.STRING
+      },
+      unit : {
+        type : dataTypes.ENUM('watt', 'volt', 'g')
       }
     })
 

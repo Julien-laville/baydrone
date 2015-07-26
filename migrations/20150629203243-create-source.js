@@ -46,6 +46,6 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-    queryInterface.dropTable('collectors')
+    queryInterface.dropTable('sources')
   }
 };

@@ -9,7 +9,7 @@ module.exports = {
      Example:
      return queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    queryInterface.createTable('parts',{
+    queryInterface.createTable('urls',{
       createdAt: {
         type: dataTypes.DATE
       },
@@ -22,18 +22,13 @@ module.exports = {
         autoIncrement : true,
         unsigned : true
       },
-      name : {
+      url : {
         type : dataTypes.STRING
       },
-      description : {
-        type : dataTypes.TEXT
+      status : {
+        type : dataTypes.ENUM('pending', 'done')
       }
     });
-
-
-
-
-
   },
 
 
@@ -45,9 +40,6 @@ module.exports = {
      Example:
      return queryInterface.dropTable('users');
      */
-    queryInterface.dropTable('parts');
-    queryInterface.dropTable('part_tags');
-    queryInterface.dropTable('part_pictures');
-
+    queryInterface.dropTable('urls');
   }
 };

@@ -5,14 +5,17 @@ module.exports = function(sequelize, DataTypes) {
         id : {type : DataTypes.INTEGER, autoIncrement : true, primaryKey : true},
         name : DataTypes.STRING,
         description : DataTypes.TEXT
+    }, {
+        classMethods : {
+            associate: function(models) {
+                Part.hasMany(models.Source);
+                Part.hasMany(models.Specification);
+            }
+        }
     });
     Part.downloadImage = function(uri, filename) {
         request.head(uri, function (err, res, body) {
-            console.log('content-type:', res.headers['content-type']);
-            console.log('content-length:', res.headers['content-length']);
-
             request(uri).pipe(fs.createWriteStream('downloads/' + filename));
-
         })
     };
     return Part;

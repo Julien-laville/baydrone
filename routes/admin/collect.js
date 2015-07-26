@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var models = require('../../models');
 
-
 var Crawler = require("crawler");
 var Url = require('url');
 
@@ -51,7 +50,7 @@ router.get('/:id/start', function(req, res, next) {
                 }
             }
 
-            //
+
             /* pics */
             jquery('img.newprodbox').each(function(i, thumb) {
                 var clickAction = jquery(thumb).attr('onclick');
@@ -62,12 +61,21 @@ router.get('/:id/start', function(req, res, next) {
             });
 
             /* price */
-            var price = jquery('#price_lb').text()
+            var price = jquery('#price_lb').text();
+
+            /* store */
+            var partPromise = models.Part.create({name : name});
+
+            partPromise.then(function(part) {
+                part.addSources([{name : 'name'}]);
+            })
+
         }
     });
 
     var collectorPromise = models.Collector.findById(req.params.id);
     collectorPromise.then(function(collecorTuple) {
+
         var collector = collecorTuple.dataValues;
         collector.urls.split(";").forEach(function(item) {
             crawler.queue("http://www.hobbyking.com/hobbyking/store/__17507__ImmersionRC_5_8Ghz_Audio_Video_Transmitter_FatShark_compatible_600mw_.html")
