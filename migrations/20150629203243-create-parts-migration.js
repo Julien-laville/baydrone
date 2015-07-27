@@ -30,6 +30,19 @@ module.exports = {
       }
     });
 
+  queryInterface.createTable('parts_picture',{
+      part_id : {
+          type : dataTypes.INTEGER,
+          primaryKey : true,
+          unsigned : true
+      },
+      picture_id : {
+          type : dataTypes.INTEGER,
+          primaryKey : true,
+          unsigned : true
+      }
+  });
+
 
 
 

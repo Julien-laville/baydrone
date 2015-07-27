@@ -28,6 +28,9 @@ module.exports = {
       url : {
         type : dataTypes.STRING
       },
+      quality : {
+        type : dataTypes.INTEGER
+      },
       price : {
         type : dataTypes.DECIMAL(16,3)
       },

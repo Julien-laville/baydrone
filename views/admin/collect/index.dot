@@ -22,6 +22,8 @@ layout: ../../layout/admin.dot
 
     <a href="/admin/collect/[[= collector.id ]]/edit">Edit</a>
 
+    <a href="#" onclick="urlCrawl([[= collector.id ]])">Urls</a>
+
     <a href="#" onclick="deleteCrawl([[= collector.id ]])" style="color:red">Delete</a>
 
     </li>
@@ -40,11 +42,18 @@ layout: ../../layout/admin.dot
     }
 
     function deleteCrawl(id) {
-        var deleteCrawlPromise = promise.get('/admin/collect/' + id + '/start')
+        var deleteCrawlPromise = promise.get('/admin/collect/' + id + '/delete')
         deleteCrawlPromise.then(function(error, data) {
             var item = document.getElementById('collector_' + id);
             item.style.display = 'none';
         });
+    }
+
+    function urlCrawl(id) {
+     var urlCrawlPromise = promise.get('/admin/collect/' + id + '/url')
+            urlCrawlPromise.then(function(error, data) {
+                console.log(data);
+            });
     }
 
 

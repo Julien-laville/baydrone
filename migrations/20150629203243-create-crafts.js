@@ -33,7 +33,7 @@ module.exports = {
         primaryKey: true,
         unsigned: true
       },
-      a : {
+      part_id : {
         type: dataTypes.INTEGER,
         primaryKey: true,
         unsigned: true

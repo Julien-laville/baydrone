@@ -25,10 +25,9 @@ module.exports = {
       site : {
         type : dataTypes.STRING
       },
-      urls : {
-        type : dataTypes.TEXT
+      status : {
+        type : DataTypes.ENUM('idle', 'working')
       }
-
     })
 
   },

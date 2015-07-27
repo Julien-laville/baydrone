@@ -24,7 +24,7 @@ router.get('/:id/start', function(req, res, next) {
                 errors.push({uri : this.uri, code : 404});
             }
 			/* name */
-			var name = jquery('#productDescription').text()
+			var name = jquery('#productDescription').text();
 
             /* ariane */
             var arianes = [];
@@ -43,10 +43,11 @@ router.get('/:id/start', function(req, res, next) {
 			var techs = tech[1].split('<br>');
 
             /* quality */
+            var quality = 0;
             for(var i = 0; i <= 5; i += 1) {
                 var crowns = jquery('img[src="images/new11/' + i + 'crown.jpg"]');
                 if(crowns.length == 1) {
-                    var quality = i
+                    quality = i
                 }
             }
 
@@ -61,23 +62,43 @@ router.get('/:id/start', function(req, res, next) {
             });
 
             /* price */
-            var price = jquery('#price_lb').text();
+            var priceMatch = jquery('#price_lb').text().match(/([A-Z]*)(.*)/);
+            var currency = priceMatch[1];
+            var price = parseFloat(priceMatch[2].replace(',', ''));
+
 
             /* store */
-            var partPromise = models.Part.create({name : name});
+            var partPromise = models.Part.create({name : name, description : desc});
 
             partPromise.then(function(part) {
-                models.Source.create({name : 'name', PartId : part.id});
+                /* source */
+                models.Source.create({name : 'name', PartId : part.id, price : price, currency : currency, quality : quality});
+                /* ariane is used as tag data */
+                var tags = arianes.map(function(ariane) {
+                    return {name : ariane}
+                });
+                models.Tag.bulkCreate(tags);
+                var bulkSpec = techs.map(function(techLine) {
+                    cleanTechLine = techLine.replace(new RegExp('<strong>|</strong>','g'), '');
+                    var techData = cleanTechLine.split(":");
+                    return {name : techData[0], value : techData[1], PartId : part.id}
+                });
+                models.Specification.bulkCreate(bulkSpec);
             })
         }
     });
 
-    var collectorPromise = models.Collector.findById(req.params.id);
+    var collectorPromise = models.Collector.findById(req.params.id, {
+        include: [ models.Url ]
+    });
     collectorPromise.then(function(collecorTuple) {
 
         var collector = collecorTuple.dataValues;
-        collector.urls.split(";").forEach(function(item) {
-            crawler.queue("http://www.hobbyking.com/hobbyking/store/__17507__ImmersionRC_5_8Ghz_Audio_Video_Transmitter_FatShark_compatible_600mw_.html")
+
+        collector.Urls.forEach(function(item) {
+            if(item.status === 'pending') {
+                crawler.queue("http://" + item.url)
+            }
         });
 
     });
@@ -90,7 +111,15 @@ router.get('/new', function(req, res, next) {
     collectorPromise.then(function(collector) {
         res.render('admin/collect/edit', collector.dataValues)
     });
+});
 
+router.get('/:id/url', function(req, res) {
+    var collectorPromise = models.Collector.findById(req.params.id, {
+        include: [models.Url]
+    });
+    collectorPromise.then(function(collectorTuple) {
+        res.json(collectorTuple.urls)
+    });
 });
 
 router.get('/:id/edit', function(req, res, next) {
@@ -101,8 +130,13 @@ router.get('/:id/edit', function(req, res, next) {
 });
 
 router.post('/:id/update', function(req, res) {
-    var collectorPromise = models.Collector.update({site : req.body.site, urls : req.body.urls}, {where:{id : req.params.id}});
+    var collectorPromise = models.Collector.update({site : req.body.site}, {where:{id : req.params.id}});
+
     collectorPromise.then(function(collector) {
+        var urls = req.body.urls.split(';').map(function(url) {
+            return {url : url, CollectorId : req.params.id, status : 'pending'}
+        });
+        models.Url.bulkCreate(urls);
         res.json(collector);
     })
 });
@@ -113,7 +147,7 @@ router.get('/:id/status', function (req, res) {
 });
 
 router.get('/:id/delete/', function(req, res) {
-    models.Collectors.destroy({where : {id : req.param.id}}, function(nb){
+    models.Collector.destroy({where : {id : req.params.id}}).then(function(nb){
         res.json({deleted : nb})
     });
 
