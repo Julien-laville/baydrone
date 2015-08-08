@@ -17,7 +17,11 @@ router.get('/new', function(req, res, next) {
 });
 
 router.post('/:id/update', function(req, res, next) {
-    models.Part.update(req.body).then(function(part) {
+    models.Part.update(req.body, {
+        where : {
+            id : req.params.id
+        }
+    }).then(function(part) {
         req.flash('info', 'Flash is back!');
         res.redirect('/admin/part');
     });

@@ -48,6 +48,14 @@ layout: ../../layout/admin.dot
     </span>
 
     [[= model.createdAt ]]
+    <div id="status">
+    [[? model.status === 'done' ]]
+        <a href="#" onclick="adminPart.toggleStatus('draft')">Set as draft</a>
+    [[??]]
+        <a href="#" onclick="adminPart.toggleStatus('done')">Set as done</a>
+    [[?]]
+    </div>
+    <input type="hidden" id="status_data" name="status" value="[[= model.status ]]">
     <input type="submit">
 </form>
 

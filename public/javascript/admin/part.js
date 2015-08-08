@@ -27,6 +27,15 @@ var adminPart = (function() {
             var specification = "<div>" + specName + '<span onclick="adminPart.removeTag("' + specName + '")">x</span></div>';
             document.getElementById('specifications').insertAdjacentHTML('beforeend', specification);
             document.getElementById('specifications_data').value += (';' + specName);
+        },
+
+        toggleStatus : function(newStatus) {
+            document.getElementById('status_data').value = newStatus;
+            if(newStatus === 'done') {
+                document.getElementById('status').innerHTML = '<a href="#" onclick="adminPart.toggleStatus(\'draft\')">Set as draft</a>';
+            } else {
+                document.getElementById('status').innerHTML = '<a href="#" onclick="adminPart.toggleStatus(\'done\')">Set as done</a>';
+            }
         }
     }
 })();
