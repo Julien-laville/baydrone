@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f698f5ea-74d0-4e84-ad18-cbc04d740d73" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/models/craft.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/javascript/client/craft.js" />
-      <change type="MOVED" beforePath="C:\Users\alter\Documents\projects\baydrone\views\craft\new.dot" afterPath="$PROJECT_DIR$/views/craft/edit.dot" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/craft.js" afterPath="$PROJECT_DIR$/routes/craft.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="baydrone.iws" />
@@ -468,7 +464,13 @@
       <option name="project" value="LOCAL" />
       <updated>1439053430569</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="init craft">
+      <created>1439056136396</created>
+      <option name="number" value="00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1439056136396</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -517,7 +519,8 @@
     <MESSAGE value="edit part" />
     <MESSAGE value="edit part 2" />
     <MESSAGE value="init craft &amp; user&#10;" />
-    <option name="LAST_COMMIT_MESSAGE" value="init craft &amp; user&#10;" />
+    <MESSAGE value="init craft" />
+    <option name="LAST_COMMIT_MESSAGE" value="init craft" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
