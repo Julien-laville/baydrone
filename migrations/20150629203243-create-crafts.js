@@ -24,6 +24,15 @@ module.exports = {
       },
       name : {
         type : dataTypes.STRING
+      },
+      description : {
+        type : dataTypes.TEXT
+      },
+      upCount : {
+        type : dataTypes.INTEGER
+      },
+      downCount : {
+        type : dataTypes.INTEGER
       }
     });
 

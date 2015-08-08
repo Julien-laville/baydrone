@@ -8,7 +8,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/new', function(req, res, next) {
     models.Craft.create({name : 'New rig'}).then(function(tuple) {
-        var model = {rigTypes : ['Racer', 'Beginner', 'Heavy Lift'], rig : tuple.dataValues};
+        var model = {rigTypes : ['racer', 'beginner', 'heavyLift'], rig : tuple.dataValues};
         res.render('craft/edit', model);
     })
 });

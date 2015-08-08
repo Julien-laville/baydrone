@@ -14,8 +14,6 @@ layout: ../layout/client.dot
         [[~]]
     </ul>
 
-
-
     <h2>Slots</h2>
     [[ for(var i = 0; i < 6; i += 1) { ]]
 
