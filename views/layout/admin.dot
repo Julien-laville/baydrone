@@ -9,8 +9,8 @@
                 <li><a href="/admin">/</a></li>
                 <li><a href="/admin/parts">Parts</a></li>
                 <li><a href="/admin/collect">Collect</a></li>
-                <li><a href="/admin/users">Users</a></li>
-                <li><a href="/admin/crafts">Crafts</a></li>
+                <li><a href="/admin/user">Users</a></li>
+                <li><a href="/admin/craft">Crafts</a></li>
             </ul>
         </nav>
         [[= layout.body ]]

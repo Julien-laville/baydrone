@@ -17,6 +17,7 @@ var part = require('./routes/part');
 var admin = require('./routes/admin/index');
 var adminPart = require('./routes/admin/part');
 var adminCollect = require('./routes/admin/collect');
+var adminUser = require('./routes/admin/user');
 
 var app = express();
 i18n = require("i18n");
@@ -59,6 +60,7 @@ app.use('/part', part);
 app.use('/admin', admin);
 app.use('/admin/part', adminPart);
 app.use('/admin/collect', adminCollect);
+app.use('/admin/user', adminUser);
 
 
 // catch 404 and forward to error handler

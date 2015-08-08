@@ -1,3 +1,8 @@
+---
+layout: ../layout/admin.dot
+---
+[[##body:
+
 <a href="admin/part">Parts</a>
 <a href="admin/collect">Collectors</a>
 
@@ -6,3 +11,5 @@
 
 users : [[= model.userCount ]] <br>
 parts : [[= model.partCount ]]
+
+#]]

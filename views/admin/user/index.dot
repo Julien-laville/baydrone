@@ -1,0 +1,22 @@
+---
+layout: ../../layout/admin.dot
+---
+[[##body:
+
+    <table>
+        <tr>
+            <td>#</td>
+            <td>Name</td>
+            <td></td>
+        <tr>
+        [[~ model.users:user ]]
+            <tr>
+                <td>[[= user.id ]]</td>
+                <td>[[= user.name ]]</td>
+                <td><a href="#" onclick="adminUser.remove([[= user.id ]])">Delete</a></td>
+            </tr>
+        [[~]]
+    </table>
+    <script src="/javascript/admin/user.js"></script>
+
+#]]
