@@ -7,7 +7,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-    res.render('craft/new', { title: 'new craft', selectors : models.Selector.findAll()});
+    models.Craft.create({name : 'New rig'}).then(function(tuple) {
+        var model = {rigTypes : ['Racer', 'Beginner', 'Heavy Lift'], rig : tuple.dataValues};
+        res.render('craft/edit', model);
+    })
+});
+
+router.get('/edit', function(req,res, next) {
+    models.Craft.findById(req.params.id).then(function(tuple) {
+        var model = {rigTypes : ['Racer', 'Beginner', 'Heavy Lift'], rig : tuple.dataValues};
+        res.render('craft/edit', model)
+    })
 });
 
 module.exports = router;

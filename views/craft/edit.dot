@@ -2,17 +2,20 @@
 layout: ../layout/client.dot
 ---
 [[##body:
-    <h1>New rig</h1>
+    <h1>Edit rig</h1>
 
     <h3>Name</h3>
-    <input type="text" name="name">
+    <input type="text" name="name" value="[[= model.rig.name ]]">
 
     <h2>Types</h2>
     <ul>
-        <li>Racer</li>
-        <li>Beginner</li>
-        <li>Heavy lift</li>
+        [[~ model.rigTypes:rigType ]]
+            <button onclick="Craft.toggleRigType('[[= rigType ]]')">[[= rigType ]]</button>
+        [[~]]
     </ul>
+
+
+
     <h2>Slots</h2>
     [[ for(var i = 0; i < 6; i += 1) { ]]
 
@@ -33,4 +36,5 @@ layout: ../layout/client.dot
 
 
     <input type="submit">
+    <script src="/javascript/client/craft.js"></script>
 #]]
