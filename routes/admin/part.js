@@ -9,22 +9,26 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/new', function(req, res, next) {
-    res.render('admin/part/new');
+    var partPromise = models.Part.create({name : 'sample part'});
+    partPromise.then(function(collector) {
+        res.render('admin/part/edit', collector.dataValues)
+    });
+
 });
 
-router.post('/create', function(req, res, next) {
-    models.Part.create(req.body).then(function(part) {
+router.post('/:id/update', function(req, res, next) {
+    models.Part.update(req.body).then(function(part) {
         req.flash('info', 'Flash is back!');
         res.redirect('/admin/part');
     });
 });
 
-router.get('/:id', function(req, res, next) {
+router.get('/:id/edit', function(req, res, next) {
     models.Part.findById(req.params.id).then(function(tuple) {
         if(!tuple) {
             res.render('admin/part/404')
         } else {
-            res.render('admin/part/show', {part : tuple.dataValues.part});
+            res.render('admin/part/edit', tuple.dataValues);
         }
     });
 });

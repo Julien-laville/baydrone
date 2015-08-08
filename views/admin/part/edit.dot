@@ -1,0 +1,56 @@
+---
+layout: ../../layout/admin.dot
+---
+[[##body:
+
+<form action="/admin/part/[[= model.id ]]/update" method="POST">
+    <h1>[[= model.id ]]</h1>
+    <input value="[[= model.name ]]" name="name"><br>
+
+    <label>factory</label>
+    <input name="factory" value="[[= model.factory ]]"><br>
+
+    <h2>Source</h2>
+    [[~ model.sources:source ]]
+        [[= source.url ]] [[= source.getPrice() ]]
+    [[~]]
+
+    <a href="#">New source</a> <br>
+
+    <h2>#Tags</h2>
+    <div id="tags">
+        [[~ model.tags:tag ]]
+            <div>
+                [[= tag.name ]]
+            </div>
+        [[~]]
+        <input type="text" onKeyUp="adminPart.addTag(this);">
+        <input type="hidden" name="tags_data" id="tags_data"></input>
+    </div>
+
+    <h2>Technical specification</h2>
+    <div id="specifications">
+        [[~ model.specifications:specification ]]
+            <span class="important">[[= specification.name ]] : </span>[[= specification.value ]]
+        [[~]]
+        <input type="text" onKeyUp="adminPart.addSpecification(this);">
+        <input type="hidden" name="specifications_data" id="specifications_data"></input>
+    </div>
+
+    [[? model.isMotor || model.isEsc ]]
+        <label>4S ?</label>
+        <input type="checkbox"></input>
+    [[?]]
+
+    <span style="background:#ecc">
+        <label>Avoid ?</label>
+        <input type="checkbox"></input>
+    </span>
+
+    [[= model.createdAt ]]
+    <input type="submit">
+</form>
+
+<script src="/javascript/admin/part.js"></script>
+
+#]]

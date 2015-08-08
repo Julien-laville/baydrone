@@ -27,6 +27,12 @@ module.exports = {
       },
       description : {
         type : dataTypes.TEXT
+      },
+      status : {
+        type : dataTypes.ENUM('done', 'pending')
+      },
+      factory : {
+          type : DataTypes.STRING
       }
     });
 
@@ -42,10 +48,6 @@ module.exports = {
           unsigned : true
       }
   });
-
-
-
-
 
   },
 

@@ -1,9 +1,18 @@
 <h1>Parts</h1>
 <a href="part/new">New</a>
-<ul>
+<table>
+<tr>
+    <td>#</td>
+    <td>Name</td>
+    <td>Status</td>
+    <td>Source count</td>
+</tr>
     [[~ model.parts :part]]
-
-        <li><a href="part/[[= part.id]]">[[= part.name]]</li>
-
+        <tr>
+            <td><a href="part/[[= part.id]]/edit">[[= part.id ]]</td>
+            <td><a href="part/[[= part.id]]/edit">[[= part.name ]]</td>
+            <td><a href="part/[[= part.id]]/edit">[[= part.status ]]</td>
+            <td><a href="part/[[= part.id]]/edit">1</a></td>
+        </tr>
     [[~]]
-</ul>
+</table>
