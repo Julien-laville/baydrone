@@ -1,0 +1,3 @@
+{{~ it.slots:slot }}
+    <div onclick="selectSlot(slot.key)"></div>
+{{~}}

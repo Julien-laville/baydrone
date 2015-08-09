@@ -39,23 +39,32 @@ var rigTypes = {
 
 var slotSetups = {
     motor : {
-
+        filters : ['power', 'kv', 's', 'motor_size']
     },
     esc : {
-
+        filters : ['power', 'tension']
     },
     camera : {
-
+        filters : ['line_count']
+    },
+    vtx : {
+        filters : ['frequency', 'power', 'range']
+    },
+    tx : {
+        filters : ['frequency', 'power', 'range']
     }
 };
 
 var Craft = (function() {
+    var currentRig = rigTypes.beginner;
+    var domSlots = document.getElementById('slots');
+    var domfilters = document.getElementById('filters');
     return {
         toggleRigType : function(rig) {
-
+            domSlots.html = doT.template('dot/slots', rig);
         },
-        selectItem : function(slot) {
-
+        selectSlot : function(slot) {
+            domfilters.html = doT.template('dot/filters', slot)
         }
     }
 })();

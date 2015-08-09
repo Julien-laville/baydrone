@@ -14,25 +14,16 @@ layout: ../layout/client.dot
         [[~]]
     </ul>
 
+    <h2>Filters</h2>
+    <div id="filters"></div>
+
     <h2>Slots</h2>
-    [[ for(var i = 0; i < 6; i += 1) { ]]
-
-        <div style="border:1px solid #7c7c7c; height:20px;width:20px"></div>
-
-    [[ } ]]
-
+    <div id="slots"></div>
 
     <label>Fuck ! I want one</label>
     <input type="checkbox"></input>
 
-    <h2>Controller</h2>
-
-
-    <h2>FPV</h2>
-
-    <a href="">More...</a>
-
-
     <input type="submit">
+    <script src="/javascript/vendors/doT.js"></script>
     <script src="/javascript/client/craft.js"></script>
 #]]
