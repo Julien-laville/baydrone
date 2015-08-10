@@ -55,16 +55,56 @@ var slotSetups = {
     }
 };
 
+var filters = {
+    power : {},
+    kv : {},
+    s : {},
+    motor_size : {},
+    tension : {},
+    frequency : {},
+    range : {}
+};
+
 var Craft = (function() {
     var currentRig = rigTypes.beginner;
     var domSlots = document.getElementById('slots');
     var domfilters = document.getElementById('filters');
+    var domPartFilterContainer = document.getElementById('part_filter_container');
     return {
-        toggleRigType : function(rig) {
+        component : {},
+        toggleRigType : function(rigKey) {
+            var rig = rigTypes[rigKey];
             domSlots.html = doT.template('dot/slots', rig);
         },
-        selectSlot : function(slot) {
+        selectSlot : function(slotKey) {
+            var slot = slotSetups[slotKey];
+            domPartFilterContainer.style.display = true;
             domfilters.html = doT.template('dot/filters', slot)
+        },
+        closeSlot : function() {
+            domPartFilterContainer.style.display = false;
+        },
+        updateFilter : function(filterKey) {
+
         }
-    }
+    };
+})();
+
+var Sim = (function() {
+    return {
+        refresh : function() {
+            var simuData = {
+                key : userKey,
+                component : Craft.component
+            };
+            var simuPromise = promise.get('simu', simuData);
+            simuPromise.then(function(error, data) {
+                if(!error) {
+                    //Hichart.new(data);
+                } else {
+                    alert('Error contacting simulator');
+                }
+            });
+        }
+    };
 })();

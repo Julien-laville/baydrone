@@ -1,0 +1,5 @@
+{{ for(var filterKey in filters) { }}
+
+    <input type="text" name="filterKey" onclick="Craft.updateFilter('{{= filterKey }}')">
+
+{{ } }}

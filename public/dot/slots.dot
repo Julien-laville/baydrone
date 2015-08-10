@@ -1,3 +1,7 @@
-{{~ it.slots:slot }}
-    <div onclick="selectSlot(slot.key)"></div>
-{{~}}
+{{ for(var slotKey in slotSetups) }}
+    <div onclick="Craft.selectSlot('{{= slotKey }}')"></div>
+{{ } }}
+
+<a href="#" onclick="Craft.updateFilter()">simu</a>
+&nbsp;-&nbsp;
+<a href="#" onclick="Craft.closeSlot()">x</a>

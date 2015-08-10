@@ -15,13 +15,55 @@ layout: ../layout/client.dot
     </ul>
 
     <h2>Filters</h2>
-    <div id="filters"></div>
+    <div id="filters">
+        <h3>Quality</h3>
+        Low end<input type="radio">
+        Mid end<input type="radio">
+        High end<input type="radio">
 
+        <h3>Price</h3>
+        <label>Min</label><input type="number">
+        <label>Max</label><input type="number">
+
+        <h3>Fpv</h3>
+        <label>Yes</label><input type="checkbox">
+    </div>
+    <div id="part_filter_container" style="display:none;">
+        <h2>Part filters</h2>
+        <div id="part_filters"></div>
+    </div>
     <h2>Slots</h2>
     <div id="slots"></div>
 
     <label>Fuck ! I want one</label>
     <input type="checkbox"></input>
+
+
+    <div id="sim">
+        <img src="/img/graph.jpg" alt="remove that shitdd">
+        <table>
+            <tr>
+                <td><b>Component price</b></td>
+                <td>€319,00</td>
+            </tr>
+            <tr>
+                <td>Max speed</td>
+                <td>110km/h<button>Toggle mph</button></td>
+            </tr>
+            <tr>
+                <td>Video range</td>
+                <td>2000m</td>
+            </tr>
+            <tr>
+                <td>Radio range</td>
+                <td>2000m</td>
+            </tr>
+            <tr>
+                <td>charge utile*</td>
+                <td>yolo 1 : easy | yolo 2 : mid | yolo 3 : hard</td>
+            </tr>
+        </table>
+    </div>
 
     <input type="submit">
     <script src="/javascript/vendors/doT.js"></script>
